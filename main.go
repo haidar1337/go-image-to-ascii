@@ -8,11 +8,14 @@ const (
 type mode string
 
 type AsciiArtConfig struct {
+	scale float64
+	
 	mode mode
 }
 
 func main() {
 	cfg := AsciiArtConfig{
+		scale: 0.75,
 		mode: darkMode,
 	}
 	repl(&cfg)

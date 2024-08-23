@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
 	"image"
 	"image/jpeg"
@@ -12,8 +11,8 @@ import (
 
 func repl(cfg *AsciiArtConfig) {
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Printf("config: %v\n", cfg.mode)
-	
+	fmt.Printf("config:\nmode: %v\nscale: %v\n", cfg.mode, cfg.scale)
+
 	for {
 		fmt.Print("Enter the path to an image: ")
 		scanner.Scan()
@@ -34,7 +33,8 @@ func repl(cfg *AsciiArtConfig) {
 			continue
 		}
 
-		gray := ConvertImageToGrayscale(img)
+		resizedImage := resizeImage(img, int(float64(img.Bounds().Dy()) * cfg.scale))
+		gray := ConvertImageToGrayscale(resizedImage)
 		asciiChars := []rune{'.', ';', '+', '*', '?', '%', 'S', '#'}
 		if cfg.mode == lightMode {
 			asciiChars = []rune{'#', 'S', '%', '?', '*', '+', ';', '.'}
@@ -51,12 +51,12 @@ func decodeImage(file *os.File, format string) (image.Image, error) {
 
 	if format == "png" {
 		img, err = png.Decode(file)
-	} else if format == "jpeg" {
+	} else if format == "jpg" {
 		img, err = jpeg.Decode(file)
 	}
 
 	if err != nil {
-		return nil, errors.New("an error has occurred during decoding")
+		return nil, err
 	}
 
 	return img, nil
