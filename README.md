@@ -1,1 +1,1 @@
-# image-to-ascii
+# go-image-to-ascii
