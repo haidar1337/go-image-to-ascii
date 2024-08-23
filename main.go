@@ -16,7 +16,7 @@ type AsciiArtConfig struct {
 func main() {
 	// change config as you like
 	cfg := AsciiArtConfig{
-		scale: 0.75,
+		scale: 0.85,
 		mode: darkMode,
 	}
 	repl(&cfg)
