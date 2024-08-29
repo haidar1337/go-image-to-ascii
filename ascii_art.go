@@ -10,7 +10,7 @@ func correspondingASCIICharacter(grayValue uint8, asciiChars *[]rune) rune {
 }
 
 
-func MapPixels(img image.Image, asciiChars *[]rune, config *AsciiArtConfig) string {
+func constructAsciiArt(img image.Image, asciiChars *[]rune, config *AsciiArtConfig) string {
 	out := ""
 	bounds := img.Bounds()
 	for y := bounds.Min.Y; y < bounds.Max.Y; y += 2 {

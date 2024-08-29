@@ -40,6 +40,7 @@ func repl(cfg *AsciiArtConfig) {
 				fmt.Printf("response failed with status code %v\n", res.StatusCode)
 				continue
 			}
+			defer res.Body.Close()
 
 			data, err = io.ReadAll(res.Body)
 			matches, err := regexp.Match(`.(?:jpg)`, []byte(input))
@@ -78,7 +79,7 @@ func repl(cfg *AsciiArtConfig) {
 		if cfg.mode == lightMode {
 			asciiChars = []rune{'#', 'S', '%', '?', '*', '+', ';', '.'}
 		}
-		asciiArt := MapPixels(gray, &asciiChars, cfg)
+		asciiArt := constructAsciiArt(gray, &asciiChars, cfg)
 
 		fmt.Println(asciiArt)
 	}
