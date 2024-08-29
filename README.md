@@ -2,7 +2,11 @@
 
 ## Overview
 This tool is used to output an ASCII art of an input image. Give it the path to your image, or paste in
-a network image URL, and it will print the ASCII art of the image.
+a network image URL, and it will print the ASCII art of the image. An example of input/output is shown below.
+
+## Key Features
+* Resize an image using a percentage scale
+* Choose a mode to fit your terminal theme
 
 Input:
 
@@ -15,15 +19,19 @@ Output:
 
 ![ascii cat](example_output.png)
 
-You may resize an image by configuring the scale in the config struct (0.00 to 1.00). You may also
-change the mode depending on your terminal's background color (dark and light modes).
 
 ## Get Started
+Start by cloning the repository in your local environment
+```
+git clone https://github.com/haidar1337/go-image-to-ascii/
+```
 Go's toolchain is required to bulid the `.exe` file.
 ```
 go build
 ```
-An executable file will be generated, run it.
+An executable binary file will be generated, run it.
 ```
 ./go-image-to-ascii
 ```
+The CLI starts and asks you for input, provide the path to an image in your local machine
+or paste in the URL of a network image to print out the ASCII art
