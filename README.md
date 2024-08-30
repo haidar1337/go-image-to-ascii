@@ -26,6 +26,7 @@ Start by cloning the repository in your local environment
 git clone https://github.com/haidar1337/go-image-to-ascii/
 ```
 Go's toolchain is required to run the program.
+Run the following command from the root of the project.
 ```
 go run .
 ```
