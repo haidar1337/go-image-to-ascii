@@ -25,13 +25,10 @@ Start by cloning the repository in your local environment
 ```
 git clone https://github.com/haidar1337/go-image-to-ascii/
 ```
-Go's toolchain is required to bulid the `.exe` file.
+Go's toolchain is required to run the program.
 ```
-go build
+go run .
 ```
-An executable binary file will be generated, run it.
-```
-./go-image-to-ascii
-```
+
 The CLI starts and asks you for input, provide the path to an image in your local machine
 or paste in the URL of a network image to print out the ASCII art
